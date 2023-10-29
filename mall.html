@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mall</title>
+  </head>
+  <body>
+    <style>
+      body {
+        background-color: rgb(66, 221, 66);
+      }
+      #main {
+        margin-top: 200px;
+        border: 2px solid black;
+        height: 300px;
+        width: 500px;
+        margin-left: 30%;
+      }
+      h1 {
+        margin-left: 30%;
+      }
+      label {
+        margin-left: 30%;
+      }
+      button {
+        margin-left: 30%;
+        background-color: rgb(221, 221, 66);
+        width: 100px;
+        border-radius: 10px;
+      }
+      select {
+        border-radius: 10px;
+        height: 30px;
+        width: 100px;
+      }
+    </style>
+    <div id="main">
+      <div>
+        <h1>Parking Fee</h1>
+        <label for="">Vehicle Type :</label>
+        <select id="veh">
+          <option value="bicycle">Bicycle</option>
+          <option value="two-wheeler">Two-Wheeler</option>
+          <option value="car">Car</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label for="">Time of parking:</label>
+        <select id="hours">
+          <option value="less">1hr-3hrs</option>
+          <option value="btwn">3hrs-6hrs</option>
+          <option value="btwn1">6hrs-7hrs</option>
+          <option value="more">7hrs and more</option>
+        </select>
+      </div>
+      <br />
+
+      <button>Calculate</button>
+      <br />
+      <br />
+
+      <div>
+        <label>Amount:</label>
+        <input type="text" id="output" />
+      </div>
+    </div>
+    <script>
+      let button = document.querySelector("button");
+      button.addEventListener("click", display);
+
+      function display() {
+        let veh = document.querySelector("#veh");
+        let hours = document.querySelector("#hours");
+        let vehicle = veh.options[veh.selectedIndex].value;
+        let hrs = hours.options[hours.selectedIndex].value;
+        let output = document.querySelector("#output");
+
+        if (vehicle == "bicycle" && hrs == "less") 
+          output.value = "400 Rs";
+        else if (vehicle == "bicycle" && hrs == "btwn") 
+          output.value = "600 Rs";
+        else if (vehicle == "bicycle" && hrs == "btwn1")
+          output.value = "900 Rs";
+        else if (vehicle == "bicycle" && hrs == "more")
+          output.value = "1200 Rs";
+        else if (vehicle == "two-wheeler" || vehicle == "car")
+          output.value = "Invalid";
+      }
+    </script>
+  </body>
+</html>
